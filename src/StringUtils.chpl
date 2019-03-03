@@ -40,8 +40,8 @@ module StringUtils {
 
   proc isString(obj): bool {
     /*
-      :param str: object to test
-      :return  If str is of type string, returns true, else false.
+      :param obj: object to test
+      :return  If obj is of type string, returns true, else false.
     */
     if obj.type == string {
       return true;
@@ -50,6 +50,10 @@ module StringUtils {
   }
 
   proc isFullString(in obj): bool {
+    /*
+      :param obj: object to test
+      :return  If obj is not empty string when typecasted to string, returns true, else false.
+    */
     if !isString(obj) {
         return false;
     }
@@ -58,18 +62,34 @@ module StringUtils {
   }
 
   proc isEmail(str: string): bool {
+     /*
+      :param str: string to test
+      :return  If str is valid email, returns true, else false.
+    */
     return isFullString(str) && EMAIL_RE.match(str).matched;
   }
 
   proc isCamelCase(str: string): bool {
+     /*
+      :param str: string to test
+      :return  If str is valid CamelCase returns true, else false.
+    */
     return isFullString(str) && CAMEL_CASE_TEST_RE.match(str).matched;
   }
 
   proc isIP(str: string): bool {
+     /*
+      :param str: string to test
+      :return  If str is IP, returns true, else false.
+    */
     return isFullString(str) && IP_RE.match(str).matched;
   }
 
   proc isPalindrome(str: string): bool {
+    /*
+      :param str: string to test
+      :return  If str is palindrome, returns true, else false.
+    */
     var len = str.size;
     for i in 1..len/2 {
       if str[i] != str[len+1-i] {
@@ -80,11 +100,19 @@ module StringUtils {
   }
 
   proc isPangram(str: string): bool {
+    /*
+      :param str: string to test
+      :return  If str is pangram, returns true, else false.
+    */
     var to_check = strToDomain(SPACES_RE.sub('', str.toLower()));
     return to_check.isSuper(letters_set);
   }
 
   proc isIsogram(str: string): bool {
+    /*
+      :param str: string to test
+      :return  If str is isogram, returns true, else false.
+    */
     var str_lower = str.toLower();
     return str_lower.size == strToDomain(str_lower).size; 
   }
@@ -129,6 +157,10 @@ module StringUtils {
   }
 
   proc lcsLength(in str1: string, in str2: string): int {
+      /*
+        :param str1, str2: strings to test
+        :return  length of lcs of str1 and str2.
+      */
       var trimIndexes = lcsTrim(str1, str2);
       var  n = str1.size+1;
       var  m = str2.size+1;
@@ -140,6 +172,10 @@ module StringUtils {
   }
 
   proc lcs(in str1: string, in str2: string): string {
+    /*
+      :param str1, str2: strings to test
+      :return  lcs of str1 and str2.
+    */
       var trimIndexes = lcsTrim(str1, str2);
       var  n = str1.size+1;
       var  m = str2.size+1;
