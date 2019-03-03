@@ -1,13 +1,33 @@
-/* Documentation for StringUtils */
+/* 
+  Package containing several utils functions for strings 
+*/
 module StringUtils {
   use Regexp;
   
-  var EMAIL_RE: regexp;
-  var CAMEL_CASE_TEST_RE: regexp;
-  var IP_RE: regexp;
-  var SPACES_RE: regexp;
-  var WORDS_COUNT_RE: regexp;
 
+  /*
+    Email Regex in chapel
+  */
+  var EMAIL_RE: regexp;
+
+  /*
+    Camel Case Regex in Chapel
+  */
+  var CAMEL_CASE_TEST_RE: regexp;
+
+  /*
+    IP Regex in chapel
+  */
+  var IP_RE: regexp;
+
+  /*
+    Spaces Regex in chapel
+  */
+  var SPACES_RE: regexp;
+
+  /*
+    A string containing all lowercase letters of english alphabet
+  */
   var letters_string = "abcdefghijklmnopqrstuvwxyz";
 
   try! {
@@ -17,6 +37,12 @@ module StringUtils {
     SPACES_RE = compile("\\s");
   }
   
+  /*
+    :arg str: string to be converted to Array
+    :type str: string
+
+    :returns: a array with each character of string seperately in array.
+  */
   proc strToArr(str: string) {
     var len = str.size;
     var arr: [1..len] string;
@@ -26,6 +52,12 @@ module StringUtils {
     return arr;
   }
 
+  /*
+    :arg str: string to be converted to Domain
+    :type str: string
+
+    :returns: a domain with each character of string in Domain.
+  */
   proc strToDomain(str: string) {
     var len = str.size;
     var dom: domain(string);
@@ -38,22 +70,26 @@ module StringUtils {
   var letters_arr = strToArr(letters_string);
   var letters_set = strToDomain(letters_string);
 
+  /*
+    :arg obj: object to test
+
+    :returns:  If obj is of type string, returns true, else false.
+
+  */
   proc isString(obj): bool {
-    /*
-      :param obj: object to test
-      :return  If obj is of type string, returns true, else false.
-    */
     if obj.type == string {
       return true;
     }
     return false;
   }
 
+  /*
+    :arg obj: object to test
+
+    :returns:  If obj is not empty string when typecasted to string, returns true, else false.
+
+  */
   proc isFullString(in obj): bool {
-    /*
-      :param obj: object to test
-      :return  If obj is not empty string when typecasted to string, returns true, else false.
-    */
     if !isString(obj) {
         return false;
     }
@@ -61,35 +97,47 @@ module StringUtils {
     return !obj2.isEmptyString();
   }
 
+  /*
+    :arg str: string to test
+    :type str: string
+
+    :returns:  If str is valid email, returns true, else false.
+
+  */
   proc isEmail(str: string): bool {
-     /*
-      :param str: string to test
-      :return  If str is valid email, returns true, else false.
-    */
     return isFullString(str) && EMAIL_RE.match(str).matched;
   }
 
+  /*
+    :arg str: string to test
+    :type str: string
+
+    :returns:  If str is valid CamelCase returns true, else false.
+
+  */
   proc isCamelCase(str: string): bool {
-     /*
-      :param str: string to test
-      :return  If str is valid CamelCase returns true, else false.
-    */
     return isFullString(str) && CAMEL_CASE_TEST_RE.match(str).matched;
   }
 
+  /*
+    :arg str: string to test
+    :type str: string
+
+    :returns:  If str is IP, returns true, else false.
+
+  */
   proc isIP(str: string): bool {
-     /*
-      :param str: string to test
-      :return  If str is IP, returns true, else false.
-    */
     return isFullString(str) && IP_RE.match(str).matched;
   }
 
+  /*
+    :arg str: string to test
+    :type str: string
+
+    :returns:  If str is palindrome, returns true, else false.
+
+  */
   proc isPalindrome(str: string): bool {
-    /*
-      :param str: string to test
-      :return  If str is palindrome, returns true, else false.
-    */
     var len = str.size;
     for i in 1..len/2 {
       if str[i] != str[len+1-i] {
@@ -99,30 +147,40 @@ module StringUtils {
     return true;
   }
 
+  /*
+    :arg str: string to test
+    :type str: string
+
+    :returns:  If str is pangram, returns true, else false.
+
+  */
   proc isPangram(str: string): bool {
-    /*
-      :param str: string to test
-      :return  If str is pangram, returns true, else false.
-    */
     var to_check = strToDomain(SPACES_RE.sub('', str.toLower()));
     return to_check.isSuper(letters_set);
   }
 
+  /*
+    :arg str: string to test
+    :type str: string
+
+    :returns:  If str is isogram, returns true, else false.
+
+  */
   proc isIsogram(str: string): bool {
-    /*
-      :param str: string to test
-      :return  If str is isogram, returns true, else false.
-    */
     var str_lower = str.toLower();
     return str_lower.size == strToDomain(str_lower).size; 
   }
 
+  /*
+    :arg str1: first string
+    :arg str2: second string 
+    :type str1: string
+    :type str2: string
+
+    :returns: 2D DP Array of LCS of size [1..str1.size+1, 1..str2.size+1]
+
+  */
   proc lcsDPTable(str1: string, str2: string) {
-    /*
-      :param str1: string  [string1]
-      :param str2: string  [string2]
-      :return 2D DP Array of LCS of size [1..str1.size+1, 1..str2.size+1]
-    */
     var dpTable: [1..str1.size+1, 1..str2.size+1] int, i, j: int;
     const n = str1.size;
     const m = str2.size;
@@ -156,11 +214,16 @@ module StringUtils {
       return [startRemove, endRemove];
   }
 
+  /*
+    :arg str1: first string 
+    :arg str2: second string 
+    :type str1: string
+    :type str2: string
+
+    :returns:  length of lcs of str1 and str2.
+
+  */
   proc lcsLength(in str1: string, in str2: string): int {
-      /*
-        :param str1, str2: strings to test
-        :return  length of lcs of str1 and str2.
-      */
       var trimIndexes = lcsTrim(str1, str2);
       var  n = str1.size+1;
       var  m = str2.size+1;
@@ -171,11 +234,16 @@ module StringUtils {
       return lcsDPTable(str1, str2)[str1.size+1, str2.size+1] + trimIndexes[1] + trimIndexes[2];
   }
 
+  /*
+    :arg str1: first string 
+    :arg str2: second string 
+    :type str1: string
+    :type str2: string
+
+    :returns:  longest common subsequence of str1 and str2.
+
+  */
   proc lcs(in str1: string, in str2: string): string {
-    /*
-      :param str1, str2: strings to test
-      :return  lcs of str1 and str2.
-    */
       var trimIndexes = lcsTrim(str1, str2);
       var  n = str1.size+1;
       var  m = str2.size+1;

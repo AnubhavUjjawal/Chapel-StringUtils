@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>StringUtils &mdash; chpldoc 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="chpldoc 0.0.1 documentation" href="../../../../../../../../../index.html"/>
+        <link rel="prev" title="chpldoc documentation" href="../../../../../../../../../index.html"/> 
+
+  
+  <script src="../../../../../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../../../../../index.html" class="icon icon-home"> chpldoc
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../index.html">chpldoc documentation</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">StringUtils</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../../../../../../index.html">chpldoc</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>StringUtils</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../../../../../../_sources/modules/Users/anubhavujjawal/Desktop/work/gsoc/Chapel/StringUtils/src/StringUtils.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-StringUtils"></span><div class="section" id="stringutils">
+<h1>StringUtils<a class="headerlink" href="#stringutils" title="Permalink to this headline">¶</a></h1>
+<p><strong>Usage</strong></p>
+<div class="highlight-chapel"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">StringUtils</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Package containing several utils functions for strings</p>
+<dl class="data">
+<dt id="StringUtils.EMAIL_RE">
+<em class="property">var </em><code class="descname">EMAIL_RE</code>: regexp<a class="headerlink" href="#StringUtils.EMAIL_RE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Email Regex in chapel</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="StringUtils.CAMEL_CASE_TEST_RE">
+<em class="property">var </em><code class="descname">CAMEL_CASE_TEST_RE</code>: regexp<a class="headerlink" href="#StringUtils.CAMEL_CASE_TEST_RE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Camel Case Regex in Chapel</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="StringUtils.IP_RE">
+<em class="property">var </em><code class="descname">IP_RE</code>: regexp<a class="headerlink" href="#StringUtils.IP_RE" title="Permalink to this definition">¶</a></dt>
+<dd><p>IP Regex in chapel</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="StringUtils.SPACES_RE">
+<em class="property">var </em><code class="descname">SPACES_RE</code>: regexp<a class="headerlink" href="#StringUtils.SPACES_RE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spaces Regex in chapel</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="StringUtils.letters_string">
+<em class="property">var </em><code class="descname">letters_string</code> = &quot;abcdefghijklmnopqrstuvwxyz&quot;<a class="headerlink" href="#StringUtils.letters_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>A string containing all lowercase letters of english alphabet</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.strToArr">
+<em class="property">proc </em><code class="descname">strToArr</code><span class="sig-paren">(</span><em>str: string</em><span class="sig-paren">)</span><a class="headerlink" href="#StringUtils.strToArr" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><strong>str</strong> : <em>string</em> &#8211; string to be converted to Array</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a array with each character of string seperately in array.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.strToDomain">
+<em class="property">proc </em><code class="descname">strToDomain</code><span class="sig-paren">(</span><em>str: string</em><span class="sig-paren">)</span><a class="headerlink" href="#StringUtils.strToDomain" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><strong>str</strong> : <em>string</em> &#8211; string to be converted to Domain</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a domain with each character of string in Domain.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="data">
+<dt id="StringUtils.letters_arr">
+<em class="property">var </em><code class="descname">letters_arr</code> = strToArr(letters_string)<a class="headerlink" href="#StringUtils.letters_arr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="StringUtils.letters_set">
+<em class="property">var </em><code class="descname">letters_set</code> = strToDomain(letters_string)<a class="headerlink" href="#StringUtils.letters_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.isString">
+<em class="property">proc </em><code class="descname">isString</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span>: bool<a class="headerlink" href="#StringUtils.isString" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><strong>obj</strong> &#8211; object to test</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">If obj is of type string, returns true, else false.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.isFullString">
+<em class="property">proc </em><code class="descname">isFullString</code><span class="sig-paren">(</span><em>in obj</em><span class="sig-paren">)</span>: bool<a class="headerlink" href="#StringUtils.isFullString" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><strong>obj</strong> &#8211; object to test</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">If obj is not empty string when typecasted to string, returns true, else false.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.isEmail">
+<em class="property">proc </em><code class="descname">isEmail</code><span class="sig-paren">(</span><em>str: string</em><span class="sig-paren">)</span>: bool<a class="headerlink" href="#StringUtils.isEmail" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><strong>str</strong> : <em>string</em> &#8211; string to test</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">If str is valid email, returns true, else false.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.isCamelCase">
+<em class="property">proc </em><code class="descname">isCamelCase</code><span class="sig-paren">(</span><em>str: string</em><span class="sig-paren">)</span>: bool<a class="headerlink" href="#StringUtils.isCamelCase" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><strong>str</strong> : <em>string</em> &#8211; string to test</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">If str is valid CamelCase returns true, else false.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.isIP">
+<em class="property">proc </em><code class="descname">isIP</code><span class="sig-paren">(</span><em>str: string</em><span class="sig-paren">)</span>: bool<a class="headerlink" href="#StringUtils.isIP" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><strong>str</strong> : <em>string</em> &#8211; string to test</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">If str is IP, returns true, else false.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.isPalindrome">
+<em class="property">proc </em><code class="descname">isPalindrome</code><span class="sig-paren">(</span><em>str: string</em><span class="sig-paren">)</span>: bool<a class="headerlink" href="#StringUtils.isPalindrome" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><strong>str</strong> : <em>string</em> &#8211; string to test</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">If str is palindrome, returns true, else false.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.isPangram">
+<em class="property">proc </em><code class="descname">isPangram</code><span class="sig-paren">(</span><em>str: string</em><span class="sig-paren">)</span>: bool<a class="headerlink" href="#StringUtils.isPangram" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><strong>str</strong> : <em>string</em> &#8211; string to test</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">If str is pangram, returns true, else false.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.isIsogram">
+<em class="property">proc </em><code class="descname">isIsogram</code><span class="sig-paren">(</span><em>str: string</em><span class="sig-paren">)</span>: bool<a class="headerlink" href="#StringUtils.isIsogram" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><strong>str</strong> : <em>string</em> &#8211; string to test</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">If str is isogram, returns true, else false.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.lcsDPTable">
+<em class="property">proc </em><code class="descname">lcsDPTable</code><span class="sig-paren">(</span><em>str1: string</em>, <em>str2: string</em><span class="sig-paren">)</span><a class="headerlink" href="#StringUtils.lcsDPTable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>str1</strong> : <em>string</em> &#8211; first string</li>
+<li><strong>str2</strong> : <em>string</em> &#8211; second string</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">2D DP Array of LCS of size [1..str1.size+1, 1..str2.size+1]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.lcsTrim">
+<em class="property">proc </em><code class="descname">lcsTrim</code><span class="sig-paren">(</span><em>str1: string</em>, <em>str2: string</em><span class="sig-paren">)</span><a class="headerlink" href="#StringUtils.lcsTrim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.lcsLength">
+<em class="property">proc </em><code class="descname">lcsLength</code><span class="sig-paren">(</span><em>in str1: string</em>, <em>in str2: string</em><span class="sig-paren">)</span>: int<a class="headerlink" href="#StringUtils.lcsLength" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>str1</strong> : <em>string</em> &#8211; first string</li>
+<li><strong>str2</strong> : <em>string</em> &#8211; second string</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">length of lcs of str1 and str2.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="StringUtils.lcs">
+<em class="property">proc </em><code class="descname">lcs</code><span class="sig-paren">(</span><em>in str1: string</em>, <em>in str2: string</em><span class="sig-paren">)</span>: string<a class="headerlink" href="#StringUtils.lcs" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>str1</strong> : <em>string</em> &#8211; first string</li>
+<li><strong>str2</strong> : <em>string</em> &#8211; second string</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">longest common subsequence of str1 and str2.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../../../../../../../../../index.html" class="btn btn-neutral" title="chpldoc documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../../../../../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+
+
+
+</body>
+</html>

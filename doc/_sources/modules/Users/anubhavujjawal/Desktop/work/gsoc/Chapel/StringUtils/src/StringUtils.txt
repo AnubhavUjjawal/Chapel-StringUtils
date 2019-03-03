@@ -1,0 +1,184 @@
+.. default-domain:: chpl
+
+.. module:: StringUtils
+   :synopsis: Package containing several utils functions for strings 
+
+StringUtils
+===========
+**Usage**
+
+.. code-block:: chapel
+
+   use StringUtils;
+
+
+Package containing several utils functions for strings 
+
+.. data:: var EMAIL_RE: regexp
+
+   
+   Email Regex in chapel
+   
+
+.. data:: var CAMEL_CASE_TEST_RE: regexp
+
+   
+   Camel Case Regex in Chapel
+   
+
+.. data:: var IP_RE: regexp
+
+   
+   IP Regex in chapel
+   
+
+.. data:: var SPACES_RE: regexp
+
+   
+   Spaces Regex in chapel
+   
+
+.. data:: var letters_string = "abcdefghijklmnopqrstuvwxyz"
+
+   
+   A string containing all lowercase letters of english alphabet
+   
+
+.. function:: proc strToArr(str: string)
+
+   
+   :arg str: string to be converted to Array
+   :type str: string
+   
+   :returns: a array with each character of string seperately in array.
+   
+
+.. function:: proc strToDomain(str: string)
+
+   
+   :arg str: string to be converted to Domain
+   :type str: string
+   
+   :returns: a domain with each character of string in Domain.
+   
+
+.. data:: var letters_arr = strToArr(letters_string)
+
+.. data:: var letters_set = strToDomain(letters_string)
+
+.. function:: proc isString(obj): bool
+
+   
+   :arg obj: object to test
+   
+   :returns:  If obj is of type string, returns true, else false.
+   
+   
+
+.. function:: proc isFullString(in obj): bool
+
+   
+   :arg obj: object to test
+   
+   :returns:  If obj is not empty string when typecasted to string, returns true, else false.
+   
+   
+
+.. function:: proc isEmail(str: string): bool
+
+   
+   :arg str: string to test
+   :type str: string
+   
+   :returns:  If str is valid email, returns true, else false.
+   
+   
+
+.. function:: proc isCamelCase(str: string): bool
+
+   
+   :arg str: string to test
+   :type str: string
+   
+   :returns:  If str is valid CamelCase returns true, else false.
+   
+   
+
+.. function:: proc isIP(str: string): bool
+
+   
+   :arg str: string to test
+   :type str: string
+   
+   :returns:  If str is IP, returns true, else false.
+   
+   
+
+.. function:: proc isPalindrome(str: string): bool
+
+   
+   :arg str: string to test
+   :type str: string
+   
+   :returns:  If str is palindrome, returns true, else false.
+   
+   
+
+.. function:: proc isPangram(str: string): bool
+
+   
+   :arg str: string to test
+   :type str: string
+   
+   :returns:  If str is pangram, returns true, else false.
+   
+   
+
+.. function:: proc isIsogram(str: string): bool
+
+   
+   :arg str: string to test
+   :type str: string
+   
+   :returns:  If str is isogram, returns true, else false.
+   
+   
+
+.. function:: proc lcsDPTable(str1: string, str2: string)
+
+   
+   :arg str1: first string
+   :arg str2: second string 
+   :type str1: string
+   :type str2: string
+   
+   :returns: 2D DP Array of LCS of size [1..str1.size+1, 1..str2.size+1]
+   
+   
+
+.. function:: proc lcsTrim(str1: string, str2: string)
+
+.. function:: proc lcsLength(in str1: string, in str2: string): int
+
+   
+   :arg str1: first string 
+   :arg str2: second string 
+   :type str1: string
+   :type str2: string
+   
+   :returns:  length of lcs of str1 and str2.
+   
+   
+
+.. function:: proc lcs(in str1: string, in str2: string): string
+
+   
+   :arg str1: first string 
+   :arg str2: second string 
+   :type str1: string
+   :type str2: string
+   
+   :returns:  longest common subsequence of str1 and str2.
+   
+   
+
