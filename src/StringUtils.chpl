@@ -73,19 +73,6 @@ module StringUtils {
   /*
     :arg obj: object to test
 
-    :returns:  If obj is of type string, returns true, else false.
-
-  */
-  proc isString(obj): bool {
-    if obj.type == string {
-      return true;
-    }
-    return false;
-  }
-
-  /*
-    :arg obj: object to test
-
     :returns:  If obj is not empty string when typecasted to string, returns true, else false.
 
   */
