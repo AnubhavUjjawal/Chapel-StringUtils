@@ -14,43 +14,13 @@ StringUtils
 
 Package containing several utils functions for strings 
 
-.. data:: var EMAIL_RE: regexp
-
-   
-   Email Regex in chapel
-   
-
-.. data:: var CAMEL_CASE_TEST_RE: regexp
-
-   
-   Camel Case Regex in Chapel
-   
-
-.. data:: var IP_RE: regexp
-
-   
-   IP Regex in chapel
-   
-
-.. data:: var SPACES_RE: regexp
-
-   
-   Spaces Regex in chapel
-   
-
-.. data:: var letters_string = "abcdefghijklmnopqrstuvwxyz"
-
-   
-   A string containing all lowercase letters of english alphabet
-   
-
 .. function:: proc strToArr(str: string)
 
    
    :arg str: string to be converted to Array
    :type str: string
    
-   :returns: a array with each character of string seperately in array.
+   :returns: a array with each character of string separately in array.
    
 
 .. function:: proc strToDomain(str: string)
@@ -62,20 +32,11 @@ Package containing several utils functions for strings
    :returns: a domain with each character of string in Domain.
    
 
-.. data:: var letters_arr = strToArr(letters_string)
+.. data:: var lettersArr = strToArr(lettersString)
 
-.. data:: var letters_set = strToDomain(letters_string)
+.. data:: var lettersSet = strToDomain(lettersString)
 
-.. function:: proc isString(obj): bool
-
-   
-   :arg obj: object to test
-   
-   :returns:  If obj is of type string, returns true, else false.
-   
-   
-
-.. function:: proc isFullString(in obj): bool
+.. function:: proc isFullString(obj): bool
 
    
    :arg obj: object to test
@@ -155,8 +116,6 @@ Package containing several utils functions for strings
    :returns: 2D DP Array of LCS of size [1..str1.size+1, 1..str2.size+1]
    
    
-
-.. function:: proc lcsTrim(str1: string, str2: string)
 
 .. function:: proc lcsLength(in str1: string, in str2: string): int
 

@@ -8,40 +8,40 @@ module StringUtils {
   /*
     Email Regex in chapel
   */
-  var EMAIL_RE: regexp;
+  private var emailRe: regexp;
 
   /*
     Camel Case Regex in Chapel
   */
-  var CAMEL_CASE_TEST_RE: regexp;
+  private var camelCaseTestRe: regexp;
 
   /*
     IP Regex in chapel
   */
-  var IP_RE: regexp;
+  private var IPRe: regexp;
 
   /*
     Spaces Regex in chapel
   */
-  var SPACES_RE: regexp;
+  private var spacesRe: regexp;
 
   /*
     A string containing all lowercase letters of english alphabet
   */
-  var letters_string = "abcdefghijklmnopqrstuvwxyz";
+  private var lettersString = "abcdefghijklmnopqrstuvwxyz";
 
   try! {
-    EMAIL_RE = compile("^[a-zA-Z\\d\\._\\+-]+@([a-z\\d-]+\\.?[a-z\\d-]+)+\\.[a-z]{2,4}$");
-    CAMEL_CASE_TEST_RE = compile("^[a-zA-Z]*([a-z]+[A-Z]+|[A-Z]+[a-z]+)[a-zA-Z\\d]*$");
-    IP_RE = compile("^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$");
-    SPACES_RE = compile("\\s");
+    emailRe = compile("^[a-zA-Z\\d\\._\\+-]+@([a-z\\d-]+\\.?[a-z\\d-]+)+\\.[a-z]{2,4}$");
+    camelCaseTestRe = compile("^[a-zA-Z]*([a-z]+[A-Z]+|[A-Z]+[a-z]+)[a-zA-Z\\d]*$");
+    IPRe = compile("^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$");
+    spacesRe = compile("\\s");
   }
   
   /*
     :arg str: string to be converted to Array
     :type str: string
 
-    :returns: a array with each character of string seperately in array.
+    :returns: a array with each character of string separately in array.
   */
   proc strToArr(str: string) {
     var len = str.size;
@@ -67,8 +67,8 @@ module StringUtils {
     return dom;
   }
 
-  var letters_arr = strToArr(letters_string);
-  var letters_set = strToDomain(letters_string);
+  var lettersArr = strToArr(lettersString);
+  var lettersSet = strToDomain(lettersString);
 
   /*
     :arg obj: object to test
@@ -76,9 +76,9 @@ module StringUtils {
     :returns:  If obj is not empty string when typecasted to string, returns true, else false.
 
   */
-  proc isFullString(in obj): bool {
+  proc isFullString(obj): bool {
     if !isString(obj) {
-        return false;
+      return false;
     }
     var obj2 = obj:string;
     return !obj2.isEmptyString();
@@ -92,7 +92,7 @@ module StringUtils {
 
   */
   proc isEmail(str: string): bool {
-    return isFullString(str) && EMAIL_RE.match(str).matched;
+    return isFullString(str) && emailRe.match(str).matched;
   }
 
   /*
@@ -103,7 +103,7 @@ module StringUtils {
 
   */
   proc isCamelCase(str: string): bool {
-    return isFullString(str) && CAMEL_CASE_TEST_RE.match(str).matched;
+    return isFullString(str) && camelCaseTestRe.match(str).matched;
   }
 
   /*
@@ -114,7 +114,7 @@ module StringUtils {
 
   */
   proc isIP(str: string): bool {
-    return isFullString(str) && IP_RE.match(str).matched;
+    return isFullString(str) && IPRe.match(str).matched;
   }
 
   /*
@@ -142,8 +142,8 @@ module StringUtils {
 
   */
   proc isPangram(str: string): bool {
-    var to_check = strToDomain(SPACES_RE.sub('', str.toLower()));
-    return to_check.isSuper(letters_set);
+    var toCheck = strToDomain(spacesRe.sub('', str.toLower()));
+    return toCheck.isSuper(lettersSet);
   }
 
   /*
@@ -154,8 +154,8 @@ module StringUtils {
 
   */
   proc isIsogram(str: string): bool {
-    var str_lower = str.toLower();
-    return str_lower.size == strToDomain(str_lower).size; 
+    var strLower = str.toLower();
+    return strLower.size == strToDomain(strLower).size; 
   }
 
   /*
@@ -184,21 +184,21 @@ module StringUtils {
     return dpTable;
   }
 
-  proc lcsTrim(str1: string, str2: string) {
-      var n = str1.size;
-      var m = str2.size;
-      var start = 1;
-      var endRemove = 0, startRemove = 0;
-      while start <= n  && start <= m && str1[start] == str2[start] {
-          start += 1;
-          startRemove += 1;
-      }
-      while start <= n  && start <= m && str1[n] == str2[m] {
-          n -= 1;
-          m -= 1;
-          endRemove += 1;
-      }
-      return [startRemove, endRemove];
+  private proc lcsTrim(str1: string, str2: string) {
+    var n = str1.size;
+    var m = str2.size;
+    var start = 1;
+    var endRemove = 0, startRemove = 0;
+    while start <= n  && start <= m && str1[start] == str2[start] {
+        start += 1;
+        startRemove += 1;
+    }
+    while start <= n  && start <= m && str1[n] == str2[m] {
+        n -= 1;
+        m -= 1;
+        endRemove += 1;
+    }
+    return [startRemove, endRemove];
   }
 
   /*
@@ -211,14 +211,14 @@ module StringUtils {
 
   */
   proc lcsLength(in str1: string, in str2: string): int {
-      var trimIndexes = lcsTrim(str1, str2);
-      var  n = str1.size+1;
-      var  m = str2.size+1;
-      str1 = str1[1+trimIndexes[1]..n-1-trimIndexes[2]];
-      str2 = str2[1+trimIndexes[1]..m-1-trimIndexes[2]];
-      n = str1.size+1;
-      m = str2.size+1;
-      return lcsDPTable(str1, str2)[str1.size+1, str2.size+1] + trimIndexes[1] + trimIndexes[2];
+    var trimIndexes = lcsTrim(str1, str2);
+    var  n = str1.size+1;
+    var  m = str2.size+1;
+    str1 = str1[1+trimIndexes[1]..n-1-trimIndexes[2]];
+    str2 = str2[1+trimIndexes[1]..m-1-trimIndexes[2]];
+    n = str1.size+1;
+    m = str2.size+1;
+    return lcsDPTable(str1, str2)[str1.size+1, str2.size+1] + trimIndexes[1] + trimIndexes[2];
   }
 
   /*
@@ -231,40 +231,40 @@ module StringUtils {
 
   */
   proc lcs(in str1: string, in str2: string): string {
-      var trimIndexes = lcsTrim(str1, str2);
-      var  n = str1.size+1;
-      var  m = str2.size+1;
-      var  i=n, j=m;
-      var prefix="", suffix="";
+    var trimIndexes = lcsTrim(str1, str2);
+    var  n = str1.size+1;
+    var  m = str2.size+1;
+    var  i=n, j=m;
+    var prefix="", suffix="";
 
-      if(trimIndexes[1]) {
-          prefix = str1[1..trimIndexes[1]];
-      }
-      if(trimIndexes[2]) {
-          suffix = str1[n-trimIndexes[2]..n-1];
-      }
-      str1 = str1[1+trimIndexes[1]..n-1-trimIndexes[2]];
-      str2 = str2[1+trimIndexes[1]..m-1-trimIndexes[2]];
-      
-      var dpTable = lcsDPTable(str1, str2);
-      n = str1.size+1;
-      m = str2.size+1;
-      i=n; j=m;
-      var lcsString = "";
-      while i!=1 && j!=1 {
-          if dpTable[i, j] == dpTable[i-1, j] {
-              i -= 1;
-          }
-          else if  dpTable[i, j] == dpTable[i, j-1] {
-              j -= 1;
-          }
-          else {
-              lcsString = str1[i-1] + lcsString;
-              i -= 1;
-              j -= 1;
-          }
-          
-      }
-      return prefix + lcsString + suffix;
+    if(trimIndexes[1]) {
+        prefix = str1[1..trimIndexes[1]];
+    }
+    if(trimIndexes[2]) {
+        suffix = str1[n-trimIndexes[2]..n-1];
+    }
+    str1 = str1[1+trimIndexes[1]..n-1-trimIndexes[2]];
+    str2 = str2[1+trimIndexes[1]..m-1-trimIndexes[2]];
+    
+    var dpTable = lcsDPTable(str1, str2);
+    n = str1.size+1;
+    m = str2.size+1;
+    i=n; j=m;
+    var lcsString = "";
+    while i!=1 && j!=1 {
+        if dpTable[i, j] == dpTable[i-1, j] {
+            i -= 1;
+        }
+        else if  dpTable[i, j] == dpTable[i, j-1] {
+            j -= 1;
+        }
+        else {
+            lcsString = str1[i-1] + lcsString;
+            i -= 1;
+            j -= 1;
+        }
+        
+    }
+    return prefix + lcsString + suffix;
   }
 }
